@@ -2,7 +2,7 @@ const noteType = require("./note-type")
 
 module.exports = `
   type Query {
-    notes(id: Int title: String): [Note!]!
+    notes(id: Int title: String ignoreCase: Boolean): [Note!]!
   }
 
   type Note { ${noteType} }

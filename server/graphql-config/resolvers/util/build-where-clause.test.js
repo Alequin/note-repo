@@ -30,4 +30,10 @@ describe("server/graphql-config/resolvers/util/build-where-clause.js", () => {
     const acutal = buildWhereClause({arg1: "value1", arg2: undefined, arg3: "value3"})
     expect(acutal).toEqual(expected)
   })
+
+  test("When given option 'ignoreCase' wraps all args and values in LOWER() function", () => {
+    const expected = "LOWER(arg1) = LOWER('value1') AND LOWER(arg2) = LOWER('value2')"
+    const acutal = buildWhereClause({arg1: "value1", arg2: "value2"}, {ignoreCase: true})
+    expect(acutal).toEqual(expected)
+  })
 })
