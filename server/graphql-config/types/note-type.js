@@ -16,4 +16,5 @@ module.exports = `
   ${summary.name}: String!
   ${content.name}: String!
   ${creationDate.name}: String!
+  tags: [Tag!]!
 `
