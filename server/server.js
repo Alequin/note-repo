@@ -1,5 +1,5 @@
 const {GraphQLServer} = require("graphql-yoga")
-const typeDefs = require("./graphql-config/type-definitions")
+const typeDefs = require("./graphql-config/types")
 const resolvers = require("./graphql-config/resolvers")
 
 const server = new GraphQLServer(
