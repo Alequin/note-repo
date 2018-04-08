@@ -15,6 +15,7 @@
   "dependencies": {
     "babel-loader": "^7.1.4",
     "css-loader": "^0.28.10",
+    "graphql-yoga": "^1.8.2",
     "lodash": "^4.17.5",
     "node-sass": "^4.8.3",
     "npm": "^5.8.0",
