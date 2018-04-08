@@ -1,7 +1,7 @@
 
 const path = require('path');
 
-const appEntry = "./source/main.js"
+const appEntry = "./client/main.js"
 
 const bundleName = "bundle.js"
 const bundleOutput = path.resolve(__dirname, "build")
