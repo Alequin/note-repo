@@ -1,5 +1,17 @@
-const postgresCommand = require("../../../database/postgres-command")
+const postgresCommand = require("./../../../database/postgres-command")
+const {
+  notesSchema,
+  tagsSchema,
+  sourcesSchema,
+  noteTagsSchema,
+  noteSourcesSchema
+} = require("./../../../database/schema")
 
 module.exports = {
-  postgresCommand
+  postgresCommand,
+  notesSchema,
+  tagsSchema,
+  sourcesSchema,
+  noteTagsSchema,
+  noteSourcesSchema
 }

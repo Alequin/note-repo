@@ -6,6 +6,9 @@ module.exports = `
   type Query {
     notes(id: Int title: String tags: [String] ignoreCase: Boolean): [Note!]!
   }
+  type Mutation {
+    insertTags(names: [String!]!): [Tag]
+  }
 
   type Tag { ${tagType} }
   type Source { ${sourceType} }
