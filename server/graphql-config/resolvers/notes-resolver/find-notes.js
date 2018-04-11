@@ -2,7 +2,7 @@ const set = require("lodash/set")
 const map = require("lodash/map")
 
 const buildWhereClause = require("./util/build-where-clause")
-const findTagsOfNote = require("./util/find-tags-of-note")
+const findNotesData = require("./util/find-notes-data")
 
 const {postgresCommand} = require("./../way-point")
 const {notesSchema, tagsSchema, noteTagsSchema} = require("./../../../../database/schema")
@@ -17,9 +17,7 @@ const tagColumns = tagsSchema.columns
 
 async function findNotes(id, title, ignoreCase){
   const requestedNotes = await notes(id, title, ignoreCase)
-  return await Promise.all(
-    map(requestedNotes, findTagsOfNote)
-  )
+  return await findNotesData(requestedNotes)
 }
 
 async function notes(id, title, ignoreCase){

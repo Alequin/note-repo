@@ -1,5 +1,5 @@
 const buildWhereClause = require("./util/build-where-clause")
-const findTagsOfNote = require("./util/find-tags-of-note")
+const findNotesData = require("./util/find-notes-data")
 
 const {postgresCommand} = require("./../way-point")
 const {notesSchema, tagsSchema, noteTagsSchema} = require("./../../../../database/schema")
@@ -20,9 +20,7 @@ async function findNotesWithTags(id, title, tags, ignoreCase){
     inClause
 
   const requestedNotes = (await noteWithTagsQuery(criteria)).rows
-  return await Promise.all(
-    requestedNotes.map(findTagsOfNote)
-  )
+  return await findNotesData(requestedNotes)
 }
 
 function tagNameInClause(valuesToConsider){
