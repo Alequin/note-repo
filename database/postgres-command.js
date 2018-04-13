@@ -1,8 +1,8 @@
 const postgresConnector = require("./postgres-connector")
-const config = require("./../config")
+const {databaseConfig: {path}} = require("./../config")
 
 async function postgresCommand(command, values = []){
-  const client = await postgresConnector(config.database.path)
+  const client = await postgresConnector(path)
   return await new Promise((resolve, reject) => {
     client.query(command, values, (err, res) => {
       if (err) reject(err)
