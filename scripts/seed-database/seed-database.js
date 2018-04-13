@@ -70,7 +70,7 @@ function sourcesInsertCommand(){
   return (
     `INSERT INTO ${sourcesSchema.name}
     (${sourcesColumns.name.name},
-     ${sourcesColumns.type.name},
+     ${sourcesColumns.islink.name},
      ${sourcesColumns.location.name})
     VALUES
     ($1, $2, $3);`

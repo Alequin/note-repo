@@ -24,7 +24,7 @@ module.exports = Object.freeze({
     columns: {
       id: {name: "id", type: "SERIAL8"},
       name: {name: "name", type: "VARCHAR(255)"},
-      type: {name: "islink", type: "BOOLEAN"},
+      islink: {name: "islink", type: "BOOLEAN"},
       location: {name: "location", type: "TEXT"}
     }
   },

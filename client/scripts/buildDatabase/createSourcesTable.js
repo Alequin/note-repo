@@ -8,7 +8,7 @@ function createSourcesTable(db){
     `CREATE TABLE ${sourcesSchema.name} (
       ${sourcesColumns.id.name} ${sourcesColumns.id.type} PRIMARY KEY,
       ${sourcesColumns.name.name} ${sourcesColumns.name.type},
-      ${sourcesColumns.type.name} ${sourcesColumns.type.type},
+      ${sourcesColumns.islink.name} ${sourcesColumns.islink.type},
       ${sourcesColumns.location.name} ${sourcesColumns.location.type}
     );`
   )

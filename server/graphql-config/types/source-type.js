@@ -4,7 +4,7 @@ const {
   columns: {
     id,
     name,
-    type,
+    islink,
     location
   }
 } = sourcesSchema
@@ -12,6 +12,6 @@ const {
 module.exports = `
   ${id.name}: ID!
   ${name.name}: String!
-  ${type.name}: Boolean!
+  ${islink.name}: Boolean!
   ${location.name}: String!
 `

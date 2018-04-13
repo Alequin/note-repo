@@ -5,7 +5,7 @@ const {
   columns: {
     id,
     name,
-    type,
+    islink,
     location
   }
 } = sourcesSchema
@@ -15,7 +15,7 @@ function createSourcesTable(){
     `CREATE TABLE ${sourcesSchema.name} (
       ${id.name} ${id.type} PRIMARY KEY,
       ${name.name} ${name.type},
-      ${type.name} ${type.type},
+      ${islink.name} ${islink.type},
       ${location.name} ${location.type}
     );`
   )
