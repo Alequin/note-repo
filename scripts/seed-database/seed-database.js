@@ -37,9 +37,7 @@ async function run(){
 }
 
 function seed(command, values){
-  console.log(values);
   const promises = map((value) => {
-    console.log(value);
     return postgresCommand(command, value)
   })(values)
   return Promise.all(promises)

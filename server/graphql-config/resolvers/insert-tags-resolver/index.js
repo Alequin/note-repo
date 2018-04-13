@@ -7,7 +7,5 @@ const {
 } = tagsSchema
 
 module.exports = async (parent, {names}) => {
-  const x = await insertTags(names)
-  console.log(x);
-  return x
+  return await insertTags(names)
 }

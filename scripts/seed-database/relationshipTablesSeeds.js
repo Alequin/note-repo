@@ -27,12 +27,10 @@ async function makeRelationshipRows(table1, table2, rowBuilder){
 }
 
 function buildSeeds(table1Contents, table2Contents, rowBuilder){
-  const x = map((table1Element) => {
+  return map((table1Element) => {
     const table2Element = randomElement(table2Contents)
     return [table1Element.id, table2Element.id]
   })(table1Contents)
-  // console.log(x);
-  return x
 }
 
 function randomElement(list){
