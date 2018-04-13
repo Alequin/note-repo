@@ -24,7 +24,7 @@ async function notes(id, title, ignoreCase){
   const criteria = buildWhereClause({id, title}, {ignoreCase});
   const command = criteria ? `${NOTE_SQL_QUERY} WHERE ${criteria}` : NOTE_SQL_QUERY;
   const {rows} = await postgresCommand(command)
-  return rows
+  return await findNotesData(rows)
 }
 
 module.exports = findNotes

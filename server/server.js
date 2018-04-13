@@ -1,11 +1,24 @@
-const {GraphQLServer} = require("graphql-yoga")
+const express = require('express');
+const bodyParser = require('body-parser');
+const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
+const { makeExecutableSchema } = require('graphql-tools');
 const typeDefs = require("./graphql-config/types")
 const resolvers = require("./graphql-config/resolvers")
 
-const server = new GraphQLServer(
-  {
+const {serverConfig} = require("./../config")
+
+const app = express();
+
+const PORT = serverConfig.port || 3000
+
+const schema = makeExecutableSchema({
     typeDefs,
     resolvers
-  }
-)
-server.start(() => console.log('Server is running on localhost:4000'))
+})
+
+app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
+app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
