@@ -24,7 +24,7 @@ module.exports = Object.freeze({
     columns: {
       id: {name: "id", type: "SERIAL8"},
       name: {name: "name", type: "VARCHAR(255)"},
-      type: {name: "type", type: "VARCHAR(255)"},
+      type: {name: "islink", type: "BOOLEAN"},
       location: {name: "location", type: "TEXT"}
     }
   },
@@ -33,8 +33,8 @@ module.exports = Object.freeze({
     name: "note_tags",
     columns: {
       id: {name: "id", type: "SERIAL8"},
-      noteId: {name: "note_id", type: "SERIAL8"},
-      tagId: {name: "tag_id", type: "SERIAL8"}
+      noteId: {name: "noteid", type: "SERIAL8"},
+      tagId: {name: "tagid", type: "SERIAL8"}
     }
   },
 
@@ -42,8 +42,8 @@ module.exports = Object.freeze({
     name: "note_sources",
     columns: {
       id: {name: "id", type: "SERIAL8"},
-      noteId: {name: "note_id", type: "SERIAL8"},
-      sourceId: {name: "source_id", type: "SERIAL8"}
+      noteId: {name: "noteid", type: "SERIAL8"},
+      sourceId: {name: "sourceid", type: "SERIAL8"}
     }
   }
 })

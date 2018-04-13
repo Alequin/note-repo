@@ -12,6 +12,6 @@ const {
 module.exports = `
   ${id.name}: ID!
   ${name.name}: String!
-  ${type.name}: String!
+  ${type.name}: Boolean!
   ${location.name}: String!
 `

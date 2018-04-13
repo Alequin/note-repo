@@ -12,22 +12,22 @@ const {
 const sourceSeeds = Object.freeze([
   {
     [name.name]: "source 1",
-    [type.name]: "Internet",
+    [type.name]: true,
     [location.name]: "www.a.com"
   },
   {
     [name.name]: "source 2",
-    [type.name]: "Book",
+    [type.name]: false,
     [location.name]: "N/A"
   },
   {
     [name.name]: "source 3",
-    [type.name]: "Internet",
+    [type.name]: true,
     [location.name]: "www.z.com"
   },
   {
     [name.name]: "source 4",
-    [type.name]: "Book",
+    [type.name]: false,
     [location.name]: "N/A"
   },
 ])
