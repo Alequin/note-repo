@@ -5,6 +5,7 @@ const insertTagsResolver = require("./insert-tags-resolver")
 const updateTagsResolver = require("./update-tags-resolver")
 
 const insertSourcesResolver = require("./insert-sources-resolver")
+const updateSourcesResolver = require("./update-sources-resolver")
 
 const resolvers = {
   Query: {
@@ -14,7 +15,8 @@ const resolvers = {
   Mutation: {
     insertTags: insertTagsResolver,
     updateTags: updateTagsResolver,
-    insertSources: insertSourcesResolver
+    insertSources: insertSourcesResolver,
+    updateSources: updateSourcesResolver
   }
 }
 
