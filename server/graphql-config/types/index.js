@@ -19,8 +19,4 @@ module.exports = `
     insertTags(names: [String!]!): [Tag]
     insertSources(sources: [sourceArguments!]!): [Source]
   }
-
-
-
-
 `
