@@ -6,6 +6,6 @@ const {
   columns
 } = tagsSchema
 
-module.exports = async (parent, {names}) => {
+module.exports = async (_parent, {names}) => {
   return await insertTags(names)
 }

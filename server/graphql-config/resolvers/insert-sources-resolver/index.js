@@ -1,6 +1,6 @@
 const insertSources = require("./insert-sources")
 
-async function insertSourcesResolver(parent, {sources}){
+async function insertSourcesResolver(_parent, {sources}){
   return await insertSources(sources)
 }
 
