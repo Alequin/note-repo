@@ -13,6 +13,7 @@ module.exports = `
 
   type Query {
     notes(id: Int title: String tags: [String] ignoreCase: Boolean): [Note!]!
+    tags: [Tag!]!
   }
   type Mutation {
     insertTags(names: [String!]!): [Tag]
