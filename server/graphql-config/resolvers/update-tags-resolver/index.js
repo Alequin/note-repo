@@ -23,11 +23,25 @@ async function updateTagsResolver(_parent, {tags}){
 }
 
 async function updateTags(tags){
-  const newTags = tags.map(async ({oldName, newName}) => {
-    const {rows} = await postgresCommand(TAG_UPDATE_COMMAND, [newName, oldName])
+  const newTags = tags.map(async (tags) => {
+    const {rows} = await postgresCommand(
+      TAG_UPDATE_COMMAND,
+      [
+        newName(tags),
+        oldName(tags)
+      ]
+    )
     return rows[0] || null
   })
   return await Promise.all(newTags)
+}
+
+function oldName(tags){
+  return tags[`old${name.name}`]
+}
+
+function newName(tags){
+  return tags[`new${name.name}`]
 }
 
 module.exports = updateTagsResolver
