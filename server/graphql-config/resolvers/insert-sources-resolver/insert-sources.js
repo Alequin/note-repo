@@ -1,7 +1,9 @@
 const reduce = require("lodash/reduce")
 const size = require("lodash/size")
 
-const {postgresCommand, sourcesSchema} = require("./../way-point")
+const postgresCommand = require("_common/database/postgres-command")
+const {sourcesSchema} = require("_common/database/schema")
+
 const placeholderSet = require("./placeholder-set")
 
 const sourcesTable = sourcesSchema.name
@@ -28,7 +30,7 @@ async function insertSources(sources){
   const placeholderValues = reduce(sources, (accumulator, {name, islink, location}) => {
     return [...accumulator, name, islink, location]
   }, [])
-  
+
   const {rows} = await postgresCommand(command, placeholderValues)
   return rows
 }

@@ -1,9 +1,9 @@
-const postgresCommand = require("./../../database/postgres-command")
+const postgresCommand = require("_common/database/postgres-command")
 const {
   notesSchema,
   sourcesSchema,
   noteSourcesSchema
-} = require("./../../database/schema.js")
+} = require("_common/database/schema")
 
 function createNoteSourcesTable(){
   const noteSourcesColumns = noteSourcesSchema.columns

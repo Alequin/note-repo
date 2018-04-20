@@ -1,5 +1,5 @@
 const map = require("lodash/fp/map")
-const {notesSchema} = require("./../../database/schema.js")
+const {notesSchema} = require("_common/database/schema")
 
 const {
   columns: {

@@ -1,5 +1,5 @@
-const postgresCommand = require("./../../database/postgres-command")
-const {notesSchema} = require("./../../database/schema.js")
+const postgresCommand = require("_common/database/postgres-command")
+const {notesSchema} = require("_common/database/schema")
 
 const {
   name,

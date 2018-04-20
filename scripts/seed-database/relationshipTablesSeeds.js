@@ -1,5 +1,5 @@
 const map = require("lodash/fp/map")
-const postgresCommand = require("./../../database/postgres-command")
+const postgresCommand = require("_common/database/postgres-command")
 const roll = require("./util/roll")
 const {
   notesSchema,
@@ -7,7 +7,7 @@ const {
   sourcesSchema,
   noteTagsSchema,
   noteSourcesSchema
-} = require("./../../database/schema.js")
+} = require("_common/database/schema")
 
 const makeNoteTagsSeeds = async function(){
   return await makeRelationshipRows(notesSchema.name, tagsSchema.name)

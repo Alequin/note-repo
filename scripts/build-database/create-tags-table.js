@@ -1,5 +1,5 @@
-const postgresCommand = require("./../../database/postgres-command")
-const {tagsSchema} = require("./../../database/schema.js")
+const postgresCommand = require("_common/database/postgres-command")
+const {tagsSchema} = require("_common/database/schema")
 
 const {
   columns: {

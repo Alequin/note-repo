@@ -1,4 +1,4 @@
-const {tagsSchema} = require("./../../../database/schema")
+const {tagsSchema} = require("_common/database/schema")
 
 const {
   columns: {

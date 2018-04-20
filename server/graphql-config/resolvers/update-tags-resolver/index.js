@@ -1,7 +1,8 @@
 const reject = require("lodash/reject")
 const isEmpty = require("lodash/isEmpty")
 
-const {postgresCommand, tagsSchema} = require("./../way-point")
+const postgresCommand = require("_common/database/postgres-command")
+const {tagsSchema} = require("_common/database/schema")
 
 const {
   columns: {
