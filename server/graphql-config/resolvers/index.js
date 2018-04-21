@@ -2,6 +2,7 @@ const notesResolver = require("./notes-resolver")
 const tagsResolver = require("./tags-resolver")
 
 const insertNoteResolver = require("./insert-note-resolver")
+const updateNoteResolver = require("./update-note-resolver")
 
 const insertTagsResolver = require("./insert-tags-resolver")
 const updateTagsResolver = require("./update-tags-resolver")
@@ -16,6 +17,7 @@ const resolvers = {
   },
   Mutation: {
     insertNote: insertNoteResolver,
+    updateNote: updateNoteResolver,
     insertTags: insertTagsResolver,
     updateTags: updateTagsResolver,
     insertSources: insertSourcesResolver,
