@@ -1,7 +1,7 @@
-const newDatabase = require(`_common/database/new-database`)
-const dropDatabase = require(`_common/database/drop-database`)
+const newDatabase = require(`database/new-database`)
+const dropDatabase = require(`database/drop-database`)
 
-const {databaseConfig: {name: dbName}} = require("_common/config")
+const {databaseConfig: {name: dbName}} = require("config")
 
 const createNotesTable = require("./create-notes-table")
 const createTagsTable = require("./create-tags-table")

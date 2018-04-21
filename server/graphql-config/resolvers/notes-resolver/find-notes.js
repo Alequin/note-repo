@@ -4,8 +4,8 @@ const map = require("lodash/map")
 const buildWhereClause = require("./util/build-where-clause")
 const findNotesData = require("./util/find-notes-data")
 
-const postgresCommand = require("_common/database/postgres-command")
-const {notesSchema, tagsSchema, noteTagsSchema} = require("_common/database/schema")
+const postgresCommand = require("database/postgres-command")
+const {notesSchema, tagsSchema, noteTagsSchema} = require("database/schema")
 
 const NOTE_SQL_QUERY = `SELECT * FROM ${notesSchema.name}`
 

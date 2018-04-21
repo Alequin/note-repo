@@ -5,7 +5,7 @@ const { makeExecutableSchema } = require('graphql-tools');
 const typeDefs = require("./graphql-config/types")
 const resolvers = require("./graphql-config/resolvers")
 
-const {serverConfig} = require("_common/config")
+const {serverConfig} = require("config")
 
 const app = express();
 

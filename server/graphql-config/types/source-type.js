@@ -1,4 +1,4 @@
-const {sourcesSchema} = require("_common/database/schema")
+const {sourcesSchema} = require("database/schema")
 
 const {
   columns: {

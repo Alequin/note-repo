@@ -1,8 +1,8 @@
 const reduce = require("lodash/reduce")
 const size = require("lodash/size")
 
-const postgresCommand = require("_common/database/postgres-command")
-const {sourcesSchema} = require("_common/database/schema")
+const postgresCommand = require("database/postgres-command")
+const {sourcesSchema} = require("database/schema")
 
 const placeholderSet = require("./placeholder-set")
 

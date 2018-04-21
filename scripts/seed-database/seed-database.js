@@ -1,6 +1,6 @@
 const map = require("lodash/fp/map")
 
-const postgresCommand = require("_common/database/postgres-command")
+const postgresCommand = require("database/postgres-command")
 
 const notesTableSeeds = require("./notes-table-seeds.js")
 const tagsTableSeeds = require("./tags-table-seeds.js")
@@ -17,7 +17,7 @@ const {
   sourcesSchema,
   noteTagsSchema,
   noteSourcesSchema
-} = require("_common/database/schema")
+} = require("database/schema")
 
 async function run(){
   await seed(notesInsertCommand(), notesTableSeeds)

@@ -1,5 +1,5 @@
-const postgresCommand = require("_common/database/postgres-command")
-const { sourcesSchema } = require("_common/database/schema")
+const postgresCommand = require("database/postgres-command")
+const { sourcesSchema } = require("database/schema")
 
 const {
   columns: {

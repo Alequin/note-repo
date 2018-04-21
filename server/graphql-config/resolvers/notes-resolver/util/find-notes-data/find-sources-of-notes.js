@@ -1,7 +1,7 @@
 const set = require("lodash/set")
 
-const postgresCommand = require("_common/database/postgres-command")
-const {sourcesSchema, noteSourcesSchema} = require("_common/database/schema")
+const postgresCommand = require("database/postgres-command")
+const {sourcesSchema, noteSourcesSchema} = require("database/schema")
 
 const noteSourcesTable = noteSourcesSchema.name
 const sourcesTable = sourcesSchema.name

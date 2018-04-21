@@ -1,7 +1,7 @@
 const times = require("lodash/times")
 
-const postgresCommand = require("_common/database/postgres-command")
-const {tagsSchema} = require("_common/database/schema")
+const postgresCommand = require("database/postgres-command")
+const {tagsSchema} = require("database/schema")
 
 const {
   name: tagsTable,

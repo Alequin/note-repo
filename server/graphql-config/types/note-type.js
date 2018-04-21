@@ -1,4 +1,4 @@
-const {notesSchema} = require("_common/database/schema")
+const {notesSchema} = require("database/schema")
 
 const {
   columns: {

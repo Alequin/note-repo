@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server/server.js",
+    "setCommonPath": "NODE_PATH=./common",
+    "start": "npm run setCommonPath node server/server.js",
     "webpack": "npx webpack --config webpack.config.js -w",
     "test": "jest",
-    "db:clean": "node scripts/build-database/create-database.js",
-    "db:seed": "node scripts/seed-database/seed-database.js",
-    "db:rebuild": "npm run db:clean && npm run db:seed"
+    "db:clean": "npm run setCommonPath node scripts/build-database/create-database.js",
+    "db:seed": "npm run setCommonPath node scripts/seed-database/seed-database.js",
+    "db:rebuild": "npm run setCommonPath npm run db:clean && npm run db:seed"
   },
   "author": "",
   "license": "ISC",
