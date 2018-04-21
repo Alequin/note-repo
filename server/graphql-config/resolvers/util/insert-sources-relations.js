@@ -22,7 +22,7 @@ async function insertTagsRelations(noteId, sourcesIds){
   const sourcesRelationsValues = sourcesIds.map((sourceId) => {
     return [noteId, sourceId]
   })
-
+  
   const command = commandWithPlaceholders(
     INSERT_SOURCE_RELATIONS,
     sourcesIds.length,

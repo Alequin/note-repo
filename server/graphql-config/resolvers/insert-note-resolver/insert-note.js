@@ -1,7 +1,7 @@
 const postgresCommand = require("database/postgres-command")
 const {notesSchema} = require("database/name-schema")
-const insertTagsRelations = require("./insert-tags-relations")
-const insertSourcesRelations = require("./insert-sources-relations")
+const insertTagsRelations = require("./../util/insert-tags-relations")
+const insertSourcesRelations = require("./../util/insert-sources-relations")
 
 const {
   name: name,
@@ -28,7 +28,7 @@ async function insertNote({title, summary, content, tagsIds, sourcesIds}){
 
   tagsIds && await insertTagsRelations(noteId, tagsIds)
   sourcesIds && await insertSourcesRelations(noteId, sourcesIds)
-  
+
   return {
     ...rows[0],
     title,

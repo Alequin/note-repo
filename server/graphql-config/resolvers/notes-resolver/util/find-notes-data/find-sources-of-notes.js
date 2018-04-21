@@ -18,7 +18,7 @@ async function findTagsOfNotes(notes){
 async function findTags(note){
   const query = `SELECT * FROM ${sourcesTable} INNER JOIN ${noteSourcesTable}
   ON ${sourcesTable}.${sourceColumns.id.name} = ${noteSourcesTable}.${noteSourcesColumns.sourceId.name}
-  WHERE ${noteSourcesTable}.${noteSourcesColumns.sourceId.name} = $1`
+  WHERE ${noteSourcesTable}.${noteSourcesColumns.noteId.name} = $1`
 
   const sources = await postgresCommand(query, [note.id])
   return set(note, "sources", sources.rows)

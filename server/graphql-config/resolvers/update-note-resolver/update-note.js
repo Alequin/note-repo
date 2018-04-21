@@ -1,5 +1,7 @@
 const postgresCommand = require("database/postgres-command")
 const {notesSchema} = require("database/name-schema")
+const updateTagsRelations = require("./update-tags-relations")
+const updateSourcesRelations = require("./update-sources-relations")
 
 const {
   name: noteTableName,
@@ -23,6 +25,9 @@ async function updateNote({id, title, summary, content, tagsIds, sourcesIds}){
     UPDATE_NOTE_COMMAND,
     [title, summary, content, id]
   )
+
+  await updateTagsRelations(id, tagsIds)
+  await updateSourcesRelations(id, sourcesIds)
 
   return note
 }
