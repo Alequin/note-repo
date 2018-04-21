@@ -35,8 +35,8 @@ const schema = (
       ${title.name}: String!
       ${summary.name}: String!
       ${content.name}: String!
-      tags: [String!]
-      sources: [String!]
+      tagsIds: [Int!]
+      sourcesIds: [Int!]
     ): Note
 
     insertTags(names: [String!]!): [Tag]

@@ -4,7 +4,7 @@ const size = require("lodash/size")
 const postgresCommand = require("database/postgres-command")
 const {sourcesSchema} = require("database/schema")
 
-const placeholderSet = require("./placeholder-set")
+const placeholderSet = require("./../util/placeholder-set")
 
 const sourcesTable = sourcesSchema.name
 
@@ -17,10 +17,14 @@ const {
   }
 } = sourcesSchema
 
+const INSERT_COMMAND_VALUE_COUNT = 3
 const BASE_INSERT_COMMAND = `INSERT INTO ${sourcesTable}
 (${name.name}, ${islink.name}, ${location.name}) VALUES`
 
+
+
 async function insertSources(sources){
+  console.log(commandPlaceholders(sources));
   const command = (
     `${BASE_INSERT_COMMAND}
       ${commandPlaceholders(sources)}
@@ -36,12 +40,7 @@ async function insertSources(sources){
 }
 
 function commandPlaceholders(sources){
-  const placeholders = sources.map((source, index) => {
-    const keyCount = size(source)
-    const maxPlaceholderForSet = index + keyCount
-    return placeholderSet(maxPlaceholderForSet, keyCount)
-  })
-  return placeholders.join(", ")
+  return placeholderSet(sources.length, INSERT_COMMAND_VALUE_COUNT)
 }
 
 module.exports = insertSources

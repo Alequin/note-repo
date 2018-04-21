@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = Object.freeze({
 
   notesSchema: {
     name: "notes",
@@ -46,4 +46,4 @@ module.exports = {
       sourceId: {name: "sourceid", type: "SERIAL8"}
     }
   }
-}
+})

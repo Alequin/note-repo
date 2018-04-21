@@ -1,18 +1,12 @@
-const mapValues = require("lodash/fp/mapValues")
-const set = require("lodash/fp/set")
+const mapValues = require("lodash/mapValues")
+const schema = require("./schema")
 
-const {
-  notesSchema
-} = require("./schema")
-
-function namesOfSchema(schema){
-  const {columns} = schema
-  const updatedColumns = mapColumnNames(columns)
-  return set('columns', updatedColumns, notesSchema)
+function mapSchemas(){
+  return mapValues(schema, (table) => {
+    return mapToNamesSchema(table)
+  })
 }
 
-const mapColumnNames = mapValues(({name}) => {return name})
+const mapToNamesSchema = require("./util/map-to-names-schema")
 
-module.exports = {
-  notesSchema = namesOfNotesSchema()
-}
+module.exports = Object.freeze(mapSchemas())
