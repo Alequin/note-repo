@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "setCommonPath": "NODE_PATH=./common",
-    "start": "npm run setCommonPath node server/server.js",
+    "start": "npm run setCommonPath node server.js",
     "webpack": "npx webpack --config webpack.config.js -w",
     "test": "jest",
     "db:clean": "npm run setCommonPath node scripts/build-database/create-database.js",
@@ -27,6 +27,7 @@
     "pg": "^7.4.1",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
+    "react-router-dom": "^4.2.2",
     "round-to": "^2.0.0",
     "sass-loader": "^6.0.7",
     "scss-loader": "0.0.1",
