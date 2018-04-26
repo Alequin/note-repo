@@ -1,4 +1,4 @@
-const {sourcesSchema} = require("database/schema")
+const {sourcesSchema} = require("database/name-schema")
 
 const {
   columns: {
@@ -7,6 +7,6 @@ const {
 } = sourcesSchema
 
 module.exports = `
-  old${name.name}: String!
+  old${name}: String!
   update: sourceArguments!
 `

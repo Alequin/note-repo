@@ -1,4 +1,4 @@
-const {notesSchema} = require("database/schema")
+const {notesSchema} = require("database/name-schema")
 
 const {
   columns: {
@@ -10,9 +10,9 @@ const {
 
 
 module.exports = `
-  ${title.name}: String!
-  ${summary.name}: String!
-  ${content.name}: String!
+  ${title}: String!
+  ${summary}: String!
+  ${content}: String!
   tagsIds: [Int!]
   sourcesIds: [Int!]
 `

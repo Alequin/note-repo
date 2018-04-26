@@ -2,9 +2,10 @@ const reject = require("lodash/reject")
 const isEmpty = require("lodash/isEmpty")
 
 const postgresCommand = require("database/postgres-command")
-const {tagsSchema} = require("database/schema")
+const {tagsSchema} = require("database/name-schema")
 
 const {
+  name: tagsTable,
   columns: {
     id,
     name
@@ -12,10 +13,10 @@ const {
 } = tagsSchema
 
 const TAG_UPDATE_COMMAND = (
-  `UPDATE ${tagsSchema.name}
-  SET ${name.name} = $1
-  WHERE ${name.name} = $2
-  RETURNING ${id.name}, ${name.name}`
+  `UPDATE ${tagsTable}
+  SET ${name} = $1
+  WHERE ${name} = $2
+  RETURNING ${id}, ${name}`
 )
 
 async function updateTagsResolver(_parent, {tags}){
@@ -25,6 +26,7 @@ async function updateTagsResolver(_parent, {tags}){
 
 async function updateTags(tags){
   const newTags = tags.map(async (tags) => {
+    console.log(TAG_UPDATE_COMMAND);
     const {rows} = await postgresCommand(
       TAG_UPDATE_COMMAND,
       [
@@ -38,11 +40,11 @@ async function updateTags(tags){
 }
 
 function oldName(tags){
-  return tags[`old${name.name}`]
+  return tags[`old${name}`]
 }
 
 function newName(tags){
-  return tags[`new${name.name}`]
+  return tags[`new${name}`]
 }
 
 module.exports = updateTagsResolver

@@ -5,9 +5,9 @@ const buildWhereClause = require("./util/build-where-clause")
 const findNotesData = require("./util/find-notes-data")
 
 const postgresCommand = require("database/postgres-command")
-const {notesSchema, tagsSchema, noteTagsSchema} = require("database/schema")
+const {notesSchema: {name: noteTable}} = require("database/schema")
 
-const NOTE_SQL_QUERY = `SELECT * FROM ${notesSchema.name}`
+const NOTE_SQL_QUERY = `SELECT * FROM ${noteTable}`
 
 async function findNotes(id, title, ignoreCase){
   const requestedNotes = await notes(id, title, ignoreCase)

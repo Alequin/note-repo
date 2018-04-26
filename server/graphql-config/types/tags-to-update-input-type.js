@@ -1,4 +1,4 @@
-const {tagsSchema} = require("database/schema")
+const {tagsSchema} = require("database/name-schema")
 
 const {
   columns: {
@@ -7,6 +7,6 @@ const {
 } = tagsSchema
 
 module.exports = `
-  old${name.name}: String!
-  new${name.name}: String!
+  old${name}: String!
+  new${name}: String!
 `

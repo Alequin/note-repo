@@ -1,4 +1,4 @@
-const {sourcesSchema} = require("database/schema")
+const {sourcesSchema} = require("database/name-schema")
 
 const {
   columns: {
@@ -10,8 +10,8 @@ const {
 } = sourcesSchema
 
 module.exports = `
-  ${id.name}: ID!
-  ${name.name}: String!
-  ${islink.name}: Boolean!
-  ${location.name}: String!
+  ${id}: ID!
+  ${name}: String!
+  ${islink}: Boolean!
+  ${location}: String!
 `

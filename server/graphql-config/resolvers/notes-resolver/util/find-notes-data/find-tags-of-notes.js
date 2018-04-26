@@ -1,7 +1,7 @@
 const set = require("lodash/set")
 
 const postgresCommand = require("database/postgres-command")
-const {tagsSchema, noteTagsSchema} = require("database/schema")
+const {tagsSchema, noteTagsSchema} = require("database/name-schema")
 
 const noteTagsTable = noteTagsSchema.name
 const tagTable = tagsSchema.name
@@ -17,8 +17,8 @@ async function findTagsOfNotes(notes){
 
 async function findTags(note){
   const query = `SELECT * FROM ${tagTable} INNER JOIN ${noteTagsTable}
-  ON ${tagTable}.${tagColumns.id.name} = ${noteTagsTable}.${noteTagsColumns.tagId.name}
-  WHERE ${noteTagsTable}.${noteTagsColumns.noteId.name} = $1`
+  ON ${tagTable}.${tagColumns.id} = ${noteTagsTable}.${noteTagsColumns.tagId}
+  WHERE ${noteTagsTable}.${noteTagsColumns.noteId} = $1`
 
   const tags = await postgresCommand(query, [note.id])
   return set(note, "tags", tags.rows)

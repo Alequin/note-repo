@@ -1,5 +1,5 @@
-const omitBy = require("lodash/fp/omitBy").convert({cap: false})
-const map = require("lodash/fp/map").convert({cap: false})
+const omitBy = require("lodash/fp/omitBy")
+const map = require('lodash/map')
 const isNil = require("lodash/isNil")
 
 function buildWhereClause(args, options = {}){
@@ -8,13 +8,13 @@ function buildWhereClause(args, options = {}){
   return argsList.join(" AND ")
 }
 
-const rejectEmptyValues = omitBy((value, key) => {return isNil(value)})
+const rejectEmptyValues = omitBy(isNil)
 const mapToWhereParams = (args, ignoreCase) => {
-  return map((value, key) => {
+  return map(args, (value, key) => {
     return ignoreCase ?
       `LOWER(${key}) = LOWER('${value}')` :
       `${key} = '${value}'`}
-  )(args)
+  )
 }
 
 module.exports = buildWhereClause

@@ -2,7 +2,7 @@ const reduce = require("lodash/reduce")
 const size = require("lodash/size")
 
 const postgresCommand = require("database/postgres-command")
-const {sourcesSchema} = require("database/schema")
+const {sourcesSchema} = require("database/name-schema")
 
 const placeholderSet = require("./../util/placeholder-set")
 
@@ -19,7 +19,7 @@ const {
 
 const INSERT_COMMAND_VALUE_COUNT = 3
 const BASE_INSERT_COMMAND = `INSERT INTO ${sourcesTable}
-(${name.name}, ${islink.name}, ${location.name}) VALUES`
+(${name}, ${islink}, ${location}) VALUES`
 
 
 
@@ -28,7 +28,7 @@ async function insertSources(sources){
   const command = (
     `${BASE_INSERT_COMMAND}
       ${commandPlaceholders(sources)}
-      RETURNING ${id.name}, ${name.name}, ${islink.name}, ${location.name}`
+      RETURNING ${id}, ${name}, ${islink}, ${location}`
   )
 
   const placeholderValues = reduce(sources, (accumulator, {name, islink, location}) => {

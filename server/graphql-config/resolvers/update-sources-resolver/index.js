@@ -2,9 +2,10 @@ const reject = require("lodash/reject")
 const isEmpty = require("lodash/isEmpty")
 
 const postgresCommand = require("database/postgres-command")
-const {sourcesSchema} = require("database/schema")
+const {sourcesSchema} = require("database/name-schema")
 
 const {
+  name: sourceTable,
   columns: {
     id,
     name,
@@ -14,10 +15,10 @@ const {
 } = sourcesSchema
 
 const UPDATE_SOURCE_TAG = (
-  `UPDATE ${sourcesSchema.name}
-  SET ${name.name} = $1, ${islink.name} = $2, ${location.name} = $3
-  WHERE ${name.name} = $4
-  RETURNING ${id.name}, ${name.name}, ${islink.name}, ${location.name}`
+  `UPDATE ${sourceTable}
+  SET ${name} = $1, ${islink} = $2, ${location} = $3
+  WHERE ${name} = $4
+  RETURNING ${id}, ${name}, ${islink}, ${location}`
 )
 
 async function updateSourcesResolver(parent, args){
@@ -41,9 +42,9 @@ function oldName(args){
 
 function extractNewSourceValues({update}){
   const {
-    [`${name.name}`]: nextName,
-    [`${islink.name}`]: nextIslink,
-    [`${location.name}`]: nextLocation
+    [`${name}`]: nextName,
+    [`${islink}`]: nextIslink,
+    [`${location}`]: nextLocation
   } = update
   return [nextName, nextIslink, nextLocation]
 }

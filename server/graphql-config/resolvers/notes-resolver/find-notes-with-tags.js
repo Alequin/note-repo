@@ -2,7 +2,7 @@ const buildWhereClause = require("./util/build-where-clause")
 const findNotesData = require("./util/find-notes-data")
 
 const postgresCommand = require("database/postgres-command")
-const {notesSchema, tagsSchema, noteTagsSchema} = require("database/schema")
+const {notesSchema, tagsSchema, noteTagsSchema} = require("database/name-schema")
 
 const noteTable = notesSchema.name
 const noteTagsTable = noteTagsSchema.name
@@ -24,7 +24,7 @@ async function findNotesWithTags(id, title, tags, ignoreCase){
 }
 
 function tagNameInClause(valuesToConsider){
-  const tagNameColumn = tagColumns.name.name
+  const tagNameColumn = tagColumns.name
   const values = valuesToConsider.map((value) => {
     return `'${value}'`
   })
@@ -33,9 +33,9 @@ function tagNameInClause(valuesToConsider){
 
 async function noteWithTagsQuery(criteria){
   const query = `SELECT * FROM ${tagTable} INNER JOIN ${noteTagsTable}
-  ON ${tagTable}.${tagColumns.id.name} = ${noteTagsTable}.${noteTagsColumns.tagId.name}
+  ON ${tagTable}.${tagColumns.id} = ${noteTagsTable}.${noteTagsColumns.tagId}
   INNER JOIN ${noteTable}
-  ON ${noteTable}.${noteColumns.id.name} = ${noteTagsTable}.${noteTagsColumns.noteId.name}
+  ON ${noteTable}.${noteColumns.id} = ${noteTagsTable}.${noteTagsColumns.noteId}
   WHERE ${criteria}`
   return await postgresCommand(query)
 }
