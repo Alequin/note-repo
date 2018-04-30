@@ -1,36 +1,37 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-const BasicExample = () => (
-  <Router>
-    <div>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-      </ul>
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
 
-      <hr />
+import Background from "./background"
+import NavBar from "./nav-bar"
+import SearchContainer from "./search-container"
+import {url} from "./../common/config"
 
-      <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
-    </div>
-  </Router>
-);
+const client = new ApolloClient({
+  uri: `${url.local}/graphql`
+});
 
-const Home = () => (
-  <div>
-    <h2>Home</h2>
-  </div>
-);
+const App = () => {
+  return (
+    <ApolloProvider client={client}>
+      <Router>
+        <Background>
+          <Container/>
+          <Route exact path="/" component={SearchContainer} />
+        </Background>
+      </Router>
+    </ApolloProvider>
+  )
+}
 
-const About = () => (
-  <div>
-    <h2>About</h2>
-  </div>
-);
+const Container = () => {
+  return (
+    <section>
+      <NavBar/>
+    </section>
+  )
+}
 
-export default BasicExample
+export default App
