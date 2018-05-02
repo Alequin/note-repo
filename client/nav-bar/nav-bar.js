@@ -4,14 +4,15 @@ import TagSearch from "./tag-search"
 
 const Container = styled.nav`
   width: 100%;
+  font-size: 1em;
 `
 
 const Input = styled.input`
   margin: auto;
   border-radius: 1em;
-  font-size: 1em;
   text-align: center;
   display: block;
+  font-size: inherit;
 `
 
 const SearchSubmit = Input.extend`
