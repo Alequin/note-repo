@@ -14,6 +14,9 @@ module.exports = {
     filename: bundleName
   },
   resolve: {
+    alias: {
+      common: path.resolve(__dirname, './common'),
+    },
 		extensions: ['.js', '.jsx']
 	},
   module: {
