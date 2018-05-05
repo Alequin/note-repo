@@ -19,7 +19,7 @@ class TagModal extends React.Component{
       tagsToShow: this.props.tags
     }
 
-    this.onSearchTag = this.onSearchTag.bind(this)
+    this.onSearchForTags = this.onSearchForTags.bind(this)
   }
 
   onSearchForTags({target: {value}}){

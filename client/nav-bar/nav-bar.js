@@ -20,7 +20,8 @@ const NavBar = ({
   showTagModal,
   onEditSearch,
   onClickTags,
-  toggleTagModal
+  toggleTagModal,
+  performSearch
 }) => {
   return (
     <Container>
@@ -38,7 +39,7 @@ const NavBar = ({
             showTagModal={showTagModal}
             toggleTagModal={toggleTagModal}
           />
-          <Button type="submit" value="Search"/>
+          <Button type="submit" value="Search" onClick={performSearch}/>
       </form>
     </Container>
   )

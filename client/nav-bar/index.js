@@ -14,6 +14,7 @@ class NavBarState extends React.Component{
     this.onEditSearch = this.onEditSearch.bind(this)
     this.onClickTags = this.onClickTags.bind(this)
     this.toggleTagModal = this.toggleTagModal.bind(this)
+    this.performSearch = this.performSearch.bind(this)
   }
 
   onEditSearch({target}){
@@ -43,6 +44,11 @@ class NavBarState extends React.Component{
     })
   }
 
+  performSearch(event){
+    event.preventDefault()
+    console.log("search");
+  }
+
   render(){
     const {searchTerm, selectedTags, showTagModal} = this.state
     return <NavBar
@@ -52,6 +58,7 @@ class NavBarState extends React.Component{
       onEditSearch={this.onEditSearch}
       onClickTags={this.onClickTags}
       toggleTagModal={this.toggleTagModal}
+      performSearch={this.performSearch}
     />
   }
 }
