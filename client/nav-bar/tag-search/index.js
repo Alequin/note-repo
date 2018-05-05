@@ -4,14 +4,15 @@ import id from "als-id-generator"
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import times from "lodash/times"
-import sizes from "./../../../common/style/screen-size"
+import sizes from "common/style/screen-size"
 
 import Tag from "./tag/index"
+import TagModal from "./tag/tag-modal"
 
 const {medium} = sizes
 const TAGS_DISPLAY_COUNT = 5
 
-const TagSearch = ({onClickTags, selectedTags}) => {
+const TagSearch = ({onClickTags, selectedTags, showTagModal, toggleTagModal}) => {
   return (
     <Query
       query={gql`
@@ -30,8 +31,9 @@ const TagSearch = ({onClickTags, selectedTags}) => {
           <div>
             <TagContainer>
               {tagsToDisplay(tags, selectedTags, onClickTags)}
-              <Tag name="More Tags" onClickTags={onClickTags}/>
+              <Tag name="More Tags" onClick={toggleTagModal}/>
             </TagContainer>
+            <TagModal visible={showTagModal}/>
           </div>
         )
       }}

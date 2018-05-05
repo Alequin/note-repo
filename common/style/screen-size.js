@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   mobile: "450px",
   medium: "700px",
   standard: "1200px",

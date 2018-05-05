@@ -7,37 +7,51 @@ class NavBarState extends React.Component{
     super(props)
     this.state = {
       searchTerm: "",
-      selectedTags: []
+      selectedTags: [],
+      showTagModal: false
     }
 
-    this.onEditSearch = ({target}) => {
-      this.setState({
-        searchTerm: target.value
-      })
-    }
+    this.onEditSearch = this.onEditSearch.bind(this)
+    this.onClickTags = this.onClickTags.bind(this)
+    this.toggleTagModal = this.toggleTagModal.bind(this)
+  }
 
-    this.onClickTags = (event) => {
-      event.preventDefault()
-      const {selectedTags} = this.state
-      const {target: {value}} = event
+  onEditSearch({target}){
+    this.setState({
+      searchTerm: target.value
+    })
+  }
 
-      const newTags = selectedTags.includes(value) ?
-        selectedTags.filter((tag) => {return tag != value}) :
-        [...selectedTags, value]
+  onClickTags(event){
+    event.preventDefault()
+    const {selectedTags} = this.state
+    const {target: {value}} = event
 
-      this.setState({
-        selectedTags: newTags
-      })
-    }
+    const newTags = selectedTags.includes(value) ?
+      selectedTags.filter((tag) => {return tag != value}) :
+      [...selectedTags, value]
+
+    this.setState({
+      selectedTags: newTags
+    })
+  }
+
+  toggleTagModal(event){
+    event.preventDefault()
+    this.setState({
+      showTagModal: !this.state.showTagModal
+    })
   }
 
   render(){
-    const {searchTerm, selectedTags} = this.state
+    const {searchTerm, selectedTags, showTagModal} = this.state
     return <NavBar
       searchTerm={searchTerm}
       selectedTags={selectedTags}
+      showTagModal={showTagModal}
       onEditSearch={this.onEditSearch}
       onClickTags={this.onClickTags}
+      toggleTagModal={this.toggleTagModal}
     />
   }
 }
