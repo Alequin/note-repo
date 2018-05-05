@@ -6,7 +6,8 @@ class NavBarState extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      searchTerm: ""
+      searchTerm: "",
+      selectedTags: []
     }
 
     this.onEditSearch = ({target}) => {
@@ -14,13 +15,29 @@ class NavBarState extends React.Component{
         searchTerm: target.value
       })
     }
+
+    this.onClickTags = (event) => {
+      event.preventDefault()
+      const {selectedTags} = this.state
+      const {target: {value}} = event
+
+      const newTags = selectedTags.includes(value) ?
+        selectedTags.filter((tag) => {return tag != value}) :
+        [...selectedTags, value]
+
+      this.setState({
+        selectedTags: newTags
+      })
+    }
   }
 
   render(){
-    const {searchTerm} = this.state
+    const {searchTerm, selectedTags} = this.state
     return <NavBar
       searchTerm={searchTerm}
+      selectedTags={selectedTags}
       onEditSearch={this.onEditSearch}
+      onClickTags={this.onClickTags}
     />
   }
 }

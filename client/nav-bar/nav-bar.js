@@ -19,7 +19,7 @@ const SearchSubmit = Input.extend`
   width: 150px;
 `
 
-const NavBar = ({searchTerm, onEditSearch}) => {
+const NavBar = ({searchTerm, selectedTags, onEditSearch, onClickTags}) => {
   return (
     <Container>
       <form>
@@ -30,7 +30,7 @@ const NavBar = ({searchTerm, onEditSearch}) => {
             value={searchTerm}
             onChange={onEditSearch}
           />
-          <TagSearch/>
+          <TagSearch selectedTags={selectedTags} onClickTags={onClickTags}/>
           <SearchSubmit type="submit" value="Search"/>
       </form>
     </Container>
