@@ -7,11 +7,13 @@ import { ApolloProvider } from "react-apollo";
 import Background from "./background"
 import NavBar from "./nav-bar"
 import SearchContainer from "./search-container"
-import {url} from "./../common/config"
+import {url} from "common/config"
 
 const client = new ApolloClient({
   uri: `${url.local}/graphql`
 });
+
+console.log(`${url.local}/graphql`);
 
 const App = () => {
   return (

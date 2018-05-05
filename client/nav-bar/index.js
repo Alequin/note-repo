@@ -8,7 +8,7 @@ class NavBarState extends React.Component{
     this.state = {
       searchTerm: "",
       selectedTags: [],
-      showTagModal: false
+      showTagModal: true
     }
 
     this.onEditSearch = this.onEditSearch.bind(this)

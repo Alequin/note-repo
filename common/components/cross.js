@@ -8,6 +8,11 @@ const Cross = styled.i`
   font-size: 25px;
 `
 
-export default ({margin}) => {
-  return <Cross className="far fa-times-circle" margin={margin}></Cross>
+export default ({margin, onClick}) => {
+  return (
+    <Cross
+      className="far fa-times-circle"
+      margin={margin}
+      onClick={onClick}/>
+  )
 }

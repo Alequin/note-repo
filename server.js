@@ -11,6 +11,7 @@ const {serverConfig} = require("config")
 const app = express();
 
 const PORT = serverConfig.port || 3000
+const GRAPHQL_ENDPOINT = '/graphql'
 
 app.use(express.static('build'));
 
@@ -19,8 +20,8 @@ const schema = makeExecutableSchema({
     resolvers
 })
 
-app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
-app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
+app.use(GRAPHQL_ENDPOINT, bodyParser.json(), graphqlExpress({ schema }));
+app.use('/graphiql', graphiqlExpress({ endpointURL: GRAPHQL_ENDPOINT }));
 
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname + '/build/index.html'));

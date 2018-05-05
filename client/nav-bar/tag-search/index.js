@@ -12,18 +12,18 @@ import TagModal from "./tag/tag-modal"
 const {medium} = sizes
 const TAGS_DISPLAY_COUNT = 5
 
+const TAG_QUERY = gql`
+  {
+    tags{
+      id
+      name
+    }
+  }
+`
+
 const TagSearch = ({onClickTags, selectedTags, showTagModal, toggleTagModal}) => {
   return (
-    <Query
-      query={gql`
-        {
-          tags{
-            id
-            name
-          }
-        }
-      `}
-    >
+    <Query query={TAG_QUERY}>
       {({ loading, error, data: {tags}}) => {
         if (loading) return <p>Loading...</p>;
         if (error) return <p>Error</p>;
@@ -33,7 +33,13 @@ const TagSearch = ({onClickTags, selectedTags, showTagModal, toggleTagModal}) =>
               {tagsToDisplay(tags, selectedTags, onClickTags)}
               <Tag name="More Tags" onClick={toggleTagModal}/>
             </TagContainer>
-            <TagModal visible={showTagModal}/>
+            <TagModal
+              tags={tags}
+              onClickTags={onClickTags}
+              selectedTags={selectedTags}
+              visible={showTagModal}
+              toggleModal={toggleTagModal}
+            />
           </div>
         )
       }}

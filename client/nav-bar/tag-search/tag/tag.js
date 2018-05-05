@@ -12,15 +12,17 @@ const HIGHLIGHTED_TAG = {
 
 const Tag = styled.button`
   width: 100px;
+  min-width: 100px;
+  min-height: 30px;
   margin: 0.2em;
   padding: 0.3em;
   border-radius: 10px;
   font-size: inherit;
-  color: white;
+  color: ${({color}) => color || "white"};
 
   background-color: ${({highlighted}) =>
     highlighted ? HIGHLIGHTED_TAG.background : TRANSPARENT_TAG.background};
-    
+
   border: ${({highlighted}) =>
     highlighted ? HIGHLIGHTED_TAG.border : TRANSPARENT_TAG.border};
 `
