@@ -6,7 +6,7 @@ import { ApolloProvider } from "react-apollo";
 
 import Background from "./background"
 import NavBar from "./nav-bar"
-import SearchContainer from "./search-container"
+import NotesList from "./notes-list"
 import {url} from "common/config"
 
 const client = new ApolloClient({
@@ -21,7 +21,7 @@ const App = () => {
       <Router>
         <Background>
           <Container/>
-          <Route exact path="/" component={SearchContainer} />
+          <Route exact path="/" component={NotesList} />
         </Background>
       </Router>
     </ApolloProvider>
