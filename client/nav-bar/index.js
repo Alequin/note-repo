@@ -1,66 +1,48 @@
 import React from "react";
-import NavBar from "./nav-bar"
+import styled from "styled-components"
+import TagSearch from "./tag-search"
 
-class NavBarState extends React.Component{
+import BaseInput from "common/components/base-input"
+import Button from "common/components/button"
 
-  constructor(props){
-    super(props)
-    this.state = {
-      searchTerm: "",
-      selectedTags: [],
-      showTagModal: false
-    }
+const Container = styled.nav`
+  width: 100%;
+  font-size: 1em;
+`
 
-    this.onEditSearch = this.onEditSearch.bind(this)
-    this.onClickTags = this.onClickTags.bind(this)
-    this.toggleTagModal = this.toggleTagModal.bind(this)
-    this.performSearch = this.performSearch.bind(this)
-  }
+const SearchSubmit = BaseInput.extend`
+  width: 150px;
+`
 
-  onEditSearch({target}){
-    this.setState({
-      searchTerm: target.value
-    })
-  }
-
-  onClickTags(event){
-    event.preventDefault()
-    const {selectedTags} = this.state
-    const {target: {value}} = event
-
-    const newTags = selectedTags.includes(value) ?
-      selectedTags.filter((tag) => {return tag != value}) :
-      [...selectedTags, value]
-
-    this.setState({
-      selectedTags: newTags
-    })
-  }
-
-  toggleTagModal(event){
-    event.preventDefault()
-    this.setState({
-      showTagModal: !this.state.showTagModal
-    })
-  }
-
-  performSearch(event){
-    event.preventDefault()
-    console.log("search");
-  }
-
-  render(){
-    const {searchTerm, selectedTags, showTagModal} = this.state
-    return <NavBar
-      searchTerm={searchTerm}
-      selectedTags={selectedTags}
-      showTagModal={showTagModal}
-      onEditSearch={this.onEditSearch}
-      onClickTags={this.onClickTags}
-      toggleTagModal={this.toggleTagModal}
-      performSearch={this.performSearch}
-    />
-  }
+const NavBar = ({
+  searchTerm,
+  selectedTags,
+  showTagModal,
+  onEditSearch,
+  onClickTags,
+  toggleTagModal,
+  performSearch
+}) => {
+  return (
+    <Container>
+      <form>
+          <BaseInput
+            id="search"
+            type="text"
+            placeholder="Search By Title"
+            value={searchTerm}
+            onChange={onEditSearch}
+          />
+          <TagSearch
+            selectedTags={selectedTags}
+            onClickTags={onClickTags}
+            showTagModal={showTagModal}
+            toggleTagModal={toggleTagModal}
+          />
+          <Button type="submit" value="Search" onClick={performSearch}/>
+      </form>
+    </Container>
+  )
 }
 
-export default NavBarState
+export default NavBar
