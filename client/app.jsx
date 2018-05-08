@@ -8,6 +8,7 @@ import { ApolloProvider } from "react-apollo";
 import Background from "./background"
 import NavBar from "./nav-bar"
 import NotesList from "./notes-list"
+import NotePage from "./note-page"
 import {url} from "common/config"
 
 import searchQuery from "./util/search-query"
@@ -85,6 +86,7 @@ class App extends ReactQueryParams{
               performSearch={this.performSearch}
             />
             <Route exact path="/" component={NotesList} />
+            <Route exact path="/note" component={NotePage} />
           </Background>
         </Router>
       </ApolloProvider>

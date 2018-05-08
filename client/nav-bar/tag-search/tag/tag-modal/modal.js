@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components"
 import sizes from "common/style/screen-size"
 
-const {mobile} = sizes
+const {mobileScreen} = sizes
 
 export default ({visible, header, body}) => {
   return (
@@ -33,7 +33,7 @@ const Modal = styled.section`
   height: 300px;
   background-color: white;
 
-  @media (max-width: ${mobile}) {
+  @media (max-width: ${mobileScreen}) {
     top: 0;
     bottom: 0;
     height: 90%;
@@ -49,7 +49,7 @@ const ModalHeader = styled.section`
   height: 30%;
   width: 100%;
 
-  @media (max-width: ${mobile}) {
+  @media (max-width: ${mobileScreen}) {
     height: 15%;
   }
 `
@@ -63,7 +63,7 @@ const ModalBody = styled.section`
   width: 100%;
   overflow-x: hidden;
 
-  @media (max-width: ${mobile}) {
+  @media (max-width: ${mobileScreen}) {
     height: 77%;
   }
 `

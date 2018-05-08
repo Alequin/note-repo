@@ -1,11 +1,14 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 import styled from "styled-components"
 import {H3} from "common/components/header"
 import Paragraph from "common/components/paragraph"
 
-const WrapperButton = styled.button`
+const WrapperButton = styled(Link)`
   background-color: transparent;
   border: none;
+  text-decoration: none;
+  color: black;
 `
 
 const NoteCardContainer = styled.section`
@@ -27,7 +30,7 @@ const Body = styled.article`
 
 export default ({note: {title, summary, tags}}) => {
   return (
-    <WrapperButton>
+    <WrapperButton to="/note">
       <NoteCardContainer>
         <H3>{title}</H3>
         <hr/>

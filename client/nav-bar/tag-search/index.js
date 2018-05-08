@@ -44,7 +44,6 @@ const TagSearch = ({onClickTags, selectedTags, showTagModal, toggleTagModal}) =>
         )
       }}
     </Query>
-
   )
 }
 

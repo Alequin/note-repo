@@ -23,7 +23,7 @@ const schema = makeExecutableSchema({
 app.use(GRAPHQL_ENDPOINT, bodyParser.json(), graphqlExpress({ schema }));
 app.use('/graphiql', graphiqlExpress({ endpointURL: GRAPHQL_ENDPOINT }));
 
-app.get('/', function(req, res) {
+app.use(function(req, res) {
   res.sendFile(path.join(__dirname + '/build/index.html'));
 });
 
