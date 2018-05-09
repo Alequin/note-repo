@@ -4,7 +4,7 @@ import styled from "styled-components"
 import {H3} from "common/components/header"
 import Paragraph from "common/components/paragraph"
 
-const WrapperButton = styled(Link)`
+const WrapperLink = styled(Link)`
   background-color: transparent;
   border: none;
   text-decoration: none;
@@ -28,9 +28,9 @@ const Body = styled.article`
   text-align: center;
 `
 
-export default ({note: {title, summary, tags}}) => {
+export default ({note: {id, title, summary, tags}}) => {
   return (
-    <WrapperButton to="/note">
+    <WrapperLink to={`/note?id=${id}`}>
       <NoteCardContainer>
         <H3>{title}</H3>
         <hr/>

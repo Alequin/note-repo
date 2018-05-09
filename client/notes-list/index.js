@@ -12,16 +12,11 @@ const NOTE_QUERY = gql`
       id
       title
       summary
-      tags{
-        id
-        name
-      }
     }
   }
 `
 
 const SearchContainer = () => {
-  console.log(queryVariablesFromLocation(window.location));
   return (
     <Query query={NOTE_QUERY} variables={queryVariablesFromLocation(window.location)}>
       {({ loading, error, data: {notes}}) => {

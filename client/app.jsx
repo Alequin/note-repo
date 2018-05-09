@@ -9,13 +9,13 @@ import Background from "./background"
 import NavBar from "./nav-bar"
 import NotesList from "./notes-list"
 import NotePage from "./note-page"
-import {url} from "common/config"
+import {hostname} from "common/config"
 
 import searchQuery from "./util/search-query"
 import queryVariablesFromLocation from "./util/query-variables-from-location"
 
 const client = new ApolloClient({
-  uri: `${url.local}/graphql`
+  uri: `${hostname.dev}/graphql`
 });
 
 class App extends ReactQueryParams{
@@ -35,7 +35,6 @@ class App extends ReactQueryParams{
     this.onEditSearch = this.onEditSearch.bind(this)
     this.onClickTags = this.onClickTags.bind(this)
     this.toggleTagModal = this.toggleTagModal.bind(this)
-    this.performSearch = this.performSearch.bind(this)
   }
 
   onEditSearch({target}){
@@ -65,11 +64,6 @@ class App extends ReactQueryParams{
     })
   }
 
-  performSearch(event){
-    event.preventDefault()
-    this.setQueryParams(searchQuery(this.state));
-  }
-
   render(){
     const {searchTerm, selectedTags, showTagModal} = this.state
     return (
@@ -83,7 +77,7 @@ class App extends ReactQueryParams{
               onEditSearch={this.onEditSearch}
               onClickTags={this.onClickTags}
               toggleTagModal={this.toggleTagModal}
-              performSearch={this.performSearch}
+              query={searchQuery({searchTerm, selectedTags})}
             />
             <Route exact path="/" component={NotesList} />
             <Route exact path="/note" component={NotePage} />
@@ -93,11 +87,6 @@ class App extends ReactQueryParams{
     )
 
   }
-}
-
-function searchTerm({searchTerm}){
-  if(!searchTerm || searchTerm === "") return undefined
-  return searchTerm
 }
 
 export default App

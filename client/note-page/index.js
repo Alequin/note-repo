@@ -27,19 +27,11 @@ const NOTE_QUERY = gql`
   }
 `
 
-const markdown = `# .Net MVC Render View
-
-* Razor syntax allows html and c# to be combined in one file
-
-* C# code may be written in cshtml files by prefixing any code with an "@" symbol
-
-* Razor also allows the use of HTML helpers
-* In the following example index is the controller method and blog is the controller
-`
-
 export default () => {
+  const id = idFromQueryString(window.location)
+  console.log("here", id);
   return (
-    <Query query={NOTE_QUERY} variables={{id: 1}}>
+    <Query query={NOTE_QUERY} variables={{id: id}}>
       {({ loading, error, data: {notes}}) => {
         if (loading) return <p>Loading...</p>;
         if (error) return <p>Error</p>;
@@ -53,7 +45,7 @@ export default () => {
               <CenteredParagraph>{summary}</CenteredParagraph>
             </Tile>
             <Tile>
-              <Markdown source={markdown}/>
+              <Markdown source={content}/>
             </Tile>
             <Tile>
               <hr/>
@@ -92,3 +84,8 @@ const Tile = styled.section`
 const CenteredParagraph = Paragraph.extend`
   text-align: center;
 `
+
+function idFromQueryString({search}){
+  const params = new URLSearchParams(search)
+  return params.get("id") || -1
+}

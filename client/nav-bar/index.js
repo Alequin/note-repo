@@ -1,9 +1,11 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 import styled from "styled-components"
 import TagSearch from "./tag-search"
 
 import BaseInput from "common/components/base-input"
 import Button from "common/components/button"
+import buildQueryStringFrom from "common/util/build-query-string-from" 
 
 const Container = styled.nav`
   width: 100%;
@@ -21,7 +23,7 @@ const NavBar = ({
   onEditSearch,
   onClickTags,
   toggleTagModal,
-  performSearch
+  query
 }) => {
   return (
     <Container>
@@ -39,7 +41,9 @@ const NavBar = ({
             showTagModal={showTagModal}
             toggleTagModal={toggleTagModal}
           />
-          <Button type="submit" value="Search" onClick={performSearch}/>
+          <Link to={`/${buildQueryStringFrom(query)}`}>
+            <Button type="submit" value="Search"/>
+          </Link>
       </form>
     </Container>
   )
